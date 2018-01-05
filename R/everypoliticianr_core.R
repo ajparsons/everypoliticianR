@@ -26,6 +26,7 @@ expand_period_start_dates <- function(pop){
 #' @param chamber_name Name of chamber if a country has multiple (not required if country only has one in EveryPolitician)
 #' @param popolo_file Direct path to popolo file stored locally or online. Will take priority over other parameters. 
 #' everypolitician()
+#' @export
 everypolitician <- function(country_name="",chamber_name="",popolo_file="") {
   
   default_countries_json = 'https://raw.githubusercontent.com/everypolitician/everypolitician-data/master/countries.json'
@@ -69,6 +70,7 @@ everypolitician <- function(country_name="",chamber_name="",popolo_file="") {
 #' @param popolo #popolo object to get lookup from
 #' @param scheme alternate ID scheme. e.g use 'parlparse' to create a two-column lookup between id and the parlparse ids. 
 #' ep_id_lookup()
+#' @export
 ep_id_lookup <- function(popolo,scheme) {
   persons <- popolo$persons
   extract_identifer <- function (row) {
@@ -94,6 +96,7 @@ ep_id_lookup <- function(popolo,scheme) {
 #' This coerces incomplete dates to the first day in month or year.
 #' @param date_string #popolo object to get lookup from
 #' approx_date()
+#' @export
 approx_date <- function(date_string) {
   #
   #
@@ -113,6 +116,7 @@ approx_date <- function(date_string) {
 #'
 #' Expands all alternative names + normal names to create data.frame that links names to ep_ids
 #' @param popolo #popolo object to get lookup from
+#' @export
 ep_alt_name_list <- function (popolo) {
   normal_names = subset(popolo$persons,select=c("id","name"))
   persons = subset(popolo$persons,select=c("id","other_names"))
