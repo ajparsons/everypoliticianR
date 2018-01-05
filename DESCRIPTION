@@ -1,4 +1,4 @@
-Package: everypoliticianr
+Package: everypoliticianR
 Title: What the Package Does (one line, title case)
 Version: 0.0.1
 Authors@R: person("Alex", "Parsons", email = "alex.parsons@mysociety.org", role = c("aut", "cre"))
