@@ -147,7 +147,7 @@ compare_gender_ratio <- function(a_name,b_name,a_chamber_name="",b_chamber_name=
     people = merge(pop$persons,memberships,by.x ="id", by.y="person_id")
     
     #recode gender as an integer so the average is meaningful. 
-    people$gender <- recode(people$gender, "'male'=0; 'female'=1")
+    people$gender <- car::recode(people$gender, "'male'=0; 'female'=1")
     
     #introduce the name of the country for comparison when merged 
     people$name = name
@@ -174,6 +174,20 @@ b_chamber_name = "Senate"
 compare_gender_ratio(a_name,b_name,a_chamber_name,b_chamber_name)
 ```
 
+Results:
+
+```
+	Welch Two Sample t-test
+
+data:  combo$gender by combo$name
+t = 2.2938, df = 139.57, p-value = 0.0233
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.01398543 0.18861270
+sample estimates:
+                 mean in group Germany mean in group United States of America 
+                             0.3092199                              0.2079208 
+```
 ### Analysing differences in age when elected
 
 EveryPolitician data contains info on when someone was elected.
@@ -215,4 +229,18 @@ people = people[!is.na(people$age),]
 
 #t-test to see if signififcant difference in age
 t.test(people$age~people$on_behalf_of_id)
+```
+
+Result:
+```
+	Welch Two Sample t-test
+
+data:  people$age by people$on_behalf_of_id
+t = -2.932, df = 424.1, p-value = 0.003551
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -4.7204184 -0.9314328
+sample estimates:
+mean in group conservative       mean in group labour 
+                  50.37723                   53.20315 
 ```
