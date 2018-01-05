@@ -179,6 +179,8 @@ compare_gender_ratio(a_name,b_name,a_chamber_name,b_chamber_name)
 EveryPolitician data contains info on when someone was elected.
 By joining the membership information for a specific term with the people table, you can get a value for age when they were elected.
 
+The approx_date function corrects for when the date is incomplete, and has only the year (1971) or month (1971-05). In these cases those dates would be expanded to '1971-01-01' and '1971-05-01'.
+
 This example looks to see if there is a significant difference in age between Labour and Conservative MPs in the 2017 Parliament:
 
 ```R
@@ -208,11 +210,9 @@ people = merge(pop$persons,landc_memberships,by.x ="id", by.y="person_id")
 #create age variable by finding difference between birthdate and election
 people$age = apply(people,1,age_at_election)
 
-# drop any without a valid age
+# drop any without a valid age (missing birthdate)
 people = people[!is.na(people$age),] 
 
 #t-test to see if signififcant difference in age
 t.test(people$age~people$on_behalf_of_id)
 ```
-
-
