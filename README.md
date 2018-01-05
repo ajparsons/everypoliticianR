@@ -114,7 +114,7 @@ wordcloud(female_speeches)
 
 Some datasets only contain names for politicians. EP data will often contain alternate versions of these names (which can be downloaded as a csv from the country page). 
 
-This command will produce the equivliant data frame - ep_alt_name_list.
+This command will produce the equivalent data frame - ep_alt_name_list.
 
 ``` R
 house_of_commons = everypolitician("United Kingdom")
