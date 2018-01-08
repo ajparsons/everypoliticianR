@@ -9,7 +9,7 @@ ep_id_lookup(popolo, scheme)
 \arguments{
 \item{popolo}{#popolo object to get lookup from}
 
-\item{scheme}{alternate ID scheme. e.g use 'parlparse' to create a two-column lookup between id and the parlparse ids. 
+\item{scheme}{alternate ID scheme. e.g use 'parlparse' to create a two-column lookup between id and the parlparse ids.
 ep_id_lookup()}
 }
 \description{

@@ -2,5 +2,6 @@
 
 export(approx_date)
 export(ep_alt_name_list)
+export(ep_get_countries_list)
 export(ep_id_lookup)
 export(everypolitician)

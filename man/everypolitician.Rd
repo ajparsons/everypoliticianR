@@ -11,7 +11,7 @@ everypolitician(country_name = "", chamber_name = "", popolo_file = "")
 
 \item{chamber_name}{Name of chamber if a country has multiple (not required if country only has one in EveryPolitician)}
 
-\item{popolo_file}{Direct path to popolo file stored locally or online. Will take priority over other parameters. 
+\item{popolo_file}{Direct path to popolo file stored locally or online. Will take priority over other parameters.
 everypolitician()}
 }
 \description{

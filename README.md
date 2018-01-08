@@ -44,6 +44,20 @@ house_of_commons = everypolitician("United Kingdom")
 us_senate = everypolitician("United States of America","Senate")
 ```
 
+### Viewing all available countries
+
+The package downloads and caches a list of all available country information. 
+
+You can view as a data frame using the ep_get_countries_list() function.
+
+``` r
+library(devtools)
+install_github("ajparsons/everypoliticianR")
+library(everypoliticianR)
+
+countries = ep_get_countries_list()
+```
+
 ### Using everypolitician to connect two different id formats
 
 EveryPolitician can be used as a rosetta stone for different id schemas. 
