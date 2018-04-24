@@ -1,6 +1,7 @@
 #Basic api access to the everypolitician json files.
 
 library(jsonlite)
+library(tidyr)
 cacheEnv <- new.env()
 assign("countries_json",NULL,envir=cacheEnv)
 
@@ -158,7 +159,7 @@ ep_alt_name_list <- function (popolo) {
   persons$other_names = apply(persons,1,unfold_names)
   persons <- setNames(persons, c("id",
                                  "name"))
-  persons <- unnest(persons)
+  persons <- tidyr::unnest(persons)
   persons <- persons[-which(persons$name == ""), ]
 
   combo <- rbind(normal_names,persons)
