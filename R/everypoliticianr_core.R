@@ -1,8 +1,9 @@
 #Basic api access to the everypolitician json files.
 
 library(jsonlite)
+cacheEnv <- new.env()
+assign("countries_json",NULL,envir=cacheEnv)
 
-countries_json = NULL
 default_json = 'https://raw.githubusercontent.com/everypolitician/everypolitician-data/master/countries.json'
 
 #' Get countries list
@@ -12,11 +13,17 @@ default_json = 'https://raw.githubusercontent.com/everypolitician/everypoliticia
 #' ep_get_countries_list()
 #' @export
 ep_get_countries_list <- function (json_location = default_json){
+  countries_json = get("countries_json",envir=cacheEnv)
   if (is.null(countries_json)){
-    countries_json <<- fromJSON(txt=json_location)
+    new_value <- jsonlite::fromJSON(txt=json_location)
+    assign("countries_json",new_value,envir=cacheEnv)
+    return (new_value)
+  } else {
+    return (countries_json)
   }
-  return (countries_json)
+
 }
+
 
 expand_period_start_dates <- function(pop){
   #replace na values for start and end dates of memberships with legislative
@@ -69,10 +76,10 @@ everypolitician <- function(country_name="",chamber_name="",popolo_file="") {
       }
       chamber = legislatures[row,]
     }
-    popolo <- fromJSON(txt=chamber$popolo_url)
+    popolo <- jsonlite::fromJSON(txt=chamber$popolo_url)
 
   } else {
-    popolo <- fromJSON(txt=popolo_file)
+    popolo <- jsonlite::fromJSON(txt=popolo_file)
   }
 
   popolo <- expand_period_start_dates(popolo)
