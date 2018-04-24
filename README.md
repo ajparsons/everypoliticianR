@@ -58,6 +58,19 @@ library(everypoliticianR)
 countries = ep_get_countries_list()
 ```
 
+### Accessing a local file
+
+If you want to work with downloaded or modified popolo files, you can just specify the
+location of the file using the 'popolo_file' parameter.
+
+``` r
+library(devtools)
+install_github("ajparsons/everypoliticianR")
+library(everypoliticianR)
+
+everypolitician(popolo_file="path\to\file.json")
+```
+
 ### Using everypolitician to connect two different id formats
 
 EveryPolitician can be used as a rosetta stone for different id schemas. 
